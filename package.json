@@ -8,7 +8,7 @@
     "react-dom": "16.0.0",
     "react-scripts": "1.1.4"
   },
-  "homepage": "http://vishvasNagpal.github.io/weatherApp",
+  "homepage": "https://vishvasnagpal.github.io/weatherApp/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
