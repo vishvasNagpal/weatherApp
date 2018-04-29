@@ -1,0 +1,163 @@
+{
+  // ESLint Ruleset for Weather App
+  // ===========================
+  // Aim to make the code more readable, safe, and
+  // maintainable through standards for writing logic;
+  // for faster long-term development,
+  // and a generally less frustrating codebase.
+
+  // Config
+  // ======
+  // Targeted at babel syntax, including
+  // eslint recommended rules,
+  // and react-recommended rules,
+  // with ECMAScript 2016 (ES7)
+  "parser": "babel-eslint",
+  "plugins": ["react", "import"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    }
+  },
+  "env": {
+    "amd": true,
+    "node": true,
+    "browser": true,
+    "es6": true
+  },
+  "globals": {
+    "Generator": true
+  },
+
+  // Rules
+  // =====
+  // Refer http://eslint.org/docs/rules/* (* eg: camelcase) for basic rule deifinitions
+  // Refer https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/*.md (* eg: display-name) for react definitions
+  // 0 : DISABLED
+  // 1 : WARN
+  // 2 : ERROR
+  "rules": {
+    "camelcase": 1,                   // myFavoriteColor, _myFavoriteColor, MY_FAVORITE_COLOR, foo (TODO:Update when integrating)
+    "comma-spacing": 0,               // function foo(a, b){}
+    "comma-dangle": [0,
+      "always-multiline"],            // Always require last comma for clarity of diffs
+    "consistent-return": 0,           // Return should always return a value
+    "indent": [0, 2,
+      { "SwitchCase": 0 }],           // Rnforce consistent indentation. Default is 4 spaces.
+    "max-len": [0, 120],
+    "no-alert": 0,                    // no alert("message");
+    "no-array-constructor": 1,        // Disallow array constructors. WRONG: Array(0, 1, 2)  CORRECT: Array(500)
+    "no-caller": 0,                   // Disallow Use of caller/callee
+    "no-case-declarations": 1,        // Disallow lexical declarations in switch case/default clauses
+    "no-catch-shadow": 1,             // Disallow Shadowing of Variables Inside of catch
+    "no-console": 0,                  // Disallow console logs (should clean up after dev)
+    "no-constant-condition": 0,       // Disallow constant expressions in conditions eg: if(false){} if(void x){}
+    "no-dupe-keys": 0,                // Disallow duplicate keys in object literals
+    "no-empty": 0,                    // Disallow empty block statements
+    "no-empty-function": 1,           // Disallow empty functions
+    "no-eval": 0,                     // Disallow eval()
+    "no-extend-native": 0,            // Disallow Extending of Native Objects
+    "no-extra-bind": 0,               // Disallow unnecessary function binding
+    "no-extra-semi": 2,               // Disallow unnecessary semicolons
+    "no-implied-eval": 0,             // Disallow Implied eval() (eg: Using setTimeout(), setInterval())
+    "no-irregular-whitespace": 0,     // Disallow irregular whitespace
+    "no-iterator": 2,                 // Disallow Iterator (Obsolete)
+    "no-label-var": 0,                // Disallow Labels That Are Variables Names
+    "no-labels": 0,                   // Disallow Labeled Statements, generally shouldn't be used
+    "no-lone-blocks": 0,              // Disallow Unnecessary Nested Blocks
+    "no-loop-func": 2,                // Disallow Functions in Loops
+    "no-mixed-spaces-and-tabs": 0,    // Disallow mixed spaces and tabs for indentation (*gasp*)
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1,
+        "maxEOF": 1,
+        "maxBOF": 1
+      }
+    ],                                // Disallow multiple empty lines
+    "no-multi-spaces": 0,             // Disallow multiple spaces
+    "no-multi-str": 0,                // Disallow Multiline Strings
+    "no-native-reassign": 2,          // Disallow Reassignment of Native Objects
+    "no-new": 0,                      // Disallow new For Side Effects
+    "no-new-func": 0,                 // Disallow Function Constructor
+    "no-new-object": 0,               // Disallow generic Object constructors
+    "no-new-wrappers": 0,             // Disallow Primitive Wrapper Instances
+    "no-octal-escape": 0,             // Disallow octal escape sequences in string literals
+    "no-process-exit": 0,             // Disallow process.exit() (Node.js)
+    "no-proto": 2,                    // Disallow Use of __proto__ (Use getPrototypeOf method instead: Obj.getPrototypeOf(obj);
+    "no-redeclare": 2,                // Disallow variable redeclaration, for those oops moments.
+    "no-return-assign": 2,            // Disallow Assignment in return Statement
+    "no-script-url": 0,               // Disallow Script URLs
+    "no-sequences": 0,                // Disallow Use of the Comma Operator
+    "no-shadow": 0,                   // Disallow variable declarations from shadowing variables declared in the outer scope
+    "no-shadow-restricted-names": 0,  // Disallow Shadowing of Restricted Names
+    "no-spaced-func": 0,              // Disallow spacing between function identifiers and their applications
+    "no-trailing-spaces": 0,          // Disallow trailing whitespace at the end of lines
+    "no-undef": 0,                    // Disallow Undeclared Variables
+    "no-undef-init": 2,               // Disallow Initializing to undefined
+    "no-underscore-dangle": 2,        // Disallow dangling underscores in identifiers (var _foo;) *?*
+    "no-unused-expressions": 0,       // Disallow Unused Expressions
+    "no-unused-vars": 0,              // Disallow Unused Variables
+    "no-use-before-define": 0,        // Disallow Early Use
+    "import/no-webpack-loader-syntax": 0, // Forbid Webpack loader syntax in imports
+    "import/first": 0,                // Ensure all imports appear before other statements
+    "import/export": 2,               // Report any invalid exports, i.e. re-export of the same name
+    "import/no-duplicates": 0,        // Report repeated import of the same module in multiple places
+    "import/order": [0, {"newlines-between": "never"}], // Enforce a convention in module import order
+    "import/newline-after-import": 0, // Enforce a newline after import statements
+    "import/prefer-default-export": 0, // Prefer a default export if module exports a single name
+    "no-with": 0,                     // Disallow with statements *?*
+    "react/display-name": 0,          // Prevent missing displayName in a React component definition
+    "react/no-find-dom-node": 0,      // Prevent usage of findDOMNode (Soon to be deprecated)
+    "react/prop-types": 0,            // Prevent missing props validation in a React component definition
+    "react/require-render-return": 0, // Enforce ES5 or ES6 class for returning value in render function
+    "react/jsx-indent": [0, 2],
+    "react/jsx-indent-props": [0, 2],
+    "react/jsx-filename-extension": [0, { "extensions": [".js", ".jsx"] }],
+    "curly": [0, "all"],              // Require Following Curly Brace Conventions
+    "dot-notation": [0, {
+      "allowKeywords": true
+    }],                               // Require Dot Notation
+    "eol-last": 0,                    // Require or disallow newline at the end of files
+    "no-extra-parens": [0,
+      "functions"],                   // Disallow unnecessary parentheses
+    "eqeqeq": 2,                      // Require === and !==
+    "key-spacing": [0, {
+      "beforeColon": false,
+      "afterColon": true
+    }],                               // Enforce consistent spacing between keys and values in object literal properties
+    "new-cap": 0,                     // Require constructor names to begin with a capital letter
+    "new-parens": 0,                  // Require parentheses when invoking a constructor with no arguments
+    "object-curly-spacing": [0,
+      "always"],                        // Require spacing around curly braces. Preference. Consistency.
+    "quotes": [0, "single",
+      { "avoidEscape": true }],       // Require single quotes
+    "semi": 0,                        // Require or disallow semicolons instead of ASI (Automatic Semicolon Insertion)
+    "semi-spacing": [0, {
+      "before": false,
+      "after": true
+    }],                               // Enforce spacing after semicolons
+    "space-before-blocks": 0,         // Enforce space before blocks. ex. `render() {}`
+    "space-infix-ops": 0,             // Require spacing around infix operators *?*
+    "keyword-spacing": 0,             // Require spaces after return, throw, and case keywords
+    "space-unary-ops": [0, {
+      "words": true,
+      "nonwords": false
+    }],                               // Require or disallow spaces before/after unary operators
+    "spaced-comment": [0, "always",
+      { "exceptions": ["*"] }],
+    "strict": [0, "global"],          // Require or disallow strict mode directives
+    "yoda": [0, "never"],             // Yoda Conditions, require or disallow (set to never; CORRECT: if (value === "red") {...})
+    "prefer-const": 0,
+    "no-const-assign": 0,
+    "no-var": 0,
+    "arrow-parens": [0, "always"]
+  }
+}

@@ -1,0 +1,23 @@
+.city h1 {
+    color: rgba(0,0,0,.6);
+    font-size: 22px;
+    margin: 0;
+}
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.currentData {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.currentData .items{
+    color: rgba(0,0,0,.8);
+    font-size: 14px;
+}
+.currentData .items span {
+    color: rgba(0,0,0,.6);
+}
