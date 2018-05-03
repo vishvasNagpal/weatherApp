@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
 import Style from './HomePage.css';
 import { Header, Days, Hours } from '../';
+import API from '../../services';
 
 class HomePage extends Component {
   constructor() {
@@ -16,8 +16,7 @@ class HomePage extends Component {
     }
   }
   componentDidMount() {
-    const url = 'https://api.openweathermap.org/data/2.5/forecast?q=delhi&mode=json&type=accurate&units=metric&appid=f8bf055299ecf93373c28105f784c9ae';
-    Axios.get(url).then((res) => {
+    API.weatherApi.getFiveDayWeather({city: 'delhi'}).then((res) => {
       if (res.status === 200) {
         this.setState({
           isLoading: false,
