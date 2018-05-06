@@ -1,11 +1,13 @@
+import axios from 'axios';
 
-const weatherApi = (api) => {
-  function getFiveDayWeather(payload) {
-    return api.get(`data/2.5/forecast?q=${payload.city}&mode=json&type=accurate&units=metric&appid=f8bf055299ecf93373c28105f784c9ae`);
-  }
+const apiKey = process.env.REACT_APP_API_KEY;
+const baseUrl = 'https://api.openweathermap.org/data/2.5/forecast';
+
+const weatherApi = () => {
+  const getFiveDayWeather = (parmas) => axios.get(`${baseUrl}?q=${parmas.city}&mode=json&type=accurate&units=metric&appid=${apiKey}`);
   return {
     getFiveDayWeather
   };
 };
 
-export default weatherApi;
+export default weatherApi();

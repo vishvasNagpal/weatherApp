@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Style from './HomePage.css';
 import { Header, Days, Hours } from '../';
-import API from '../../services';
+import weatherApi from '../../api/weatherApi';
 
 class HomePage extends Component {
   constructor() {
@@ -15,8 +15,9 @@ class HomePage extends Component {
       errorText: 'Oops! something went wrong',
     }
   }
-  componentDidMount() {
-    API.weatherApi.getFiveDayWeather({city: 'delhi'}).then((res) => {
+  async componentDidMount ()  {
+    try {
+      const res = await weatherApi.getFiveDayWeather({city: 'delhi'});
       if (res.status === 200) {
         this.setState({
           isLoading: false,
@@ -34,18 +35,12 @@ class HomePage extends Component {
             groupedData[existedItem].data.push(item);
           }
         });
-        this.setState({
-          data: groupedData,
-          selectedDay: groupedData[0],
-        });
-      } else {
-        this.setState({
-          isLoading: false,
-          error: true,
-        });
+        return this.setState({ data: groupedData, selectedDay: groupedData[0] });
       }
-
-    });
+    }
+    catch(error) {
+      this.setState({ isLoading: false, error: true });
+    }
   }
 
   onDayClick(item) {
